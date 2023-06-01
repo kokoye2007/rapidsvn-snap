@@ -1,0 +1,56 @@
+name: rapidsvn-snap
+version: "0.12.1dfsg-3.1"
+summary: GUI client for Subversion
+description: |
+ Rapidsvn is a graphical client for the Subversion
+ revision control system (svn) providing an easy to
+ use interface for Subversion features.
+ It aims to be simple for beginners but flexible
+ enough to increase productivity for experienced 
+ Subversion users.
+
+confinement: strict
+base: core18
+grade: stable
+
+parts:
+    rapidsvn:
+        plugin: dump
+        source-type: deb
+        source: http://mirrors.kernel.org/ubuntu/pool/universe/r/rapidsvn/rapidsvn_0.12.1dfsg-3.1_amd64.deb
+        override-build: |
+                snapcraftctl build
+                #fix icon path
+                sed -i 's|Icon=rapidsvn|Icon=${SNAP}/usr/share/pixmaps/rapidsvn.png|g' $SNAPCRAFT_PART_INSTALL/usr/share/applications/rapidsvn.desktop
+
+        stage-packages:
+                - libsvncpp3
+                - libsvn1
+                - libwxgtk3.0-0v5
+                - libwxbase3.0-0v5
+                - libstdc++6
+                - libsqlite3-0 
+                - libgcc1
+                - libapr1 
+                - libqtcore4
+                - libgnome-keyring0
+                - libkdecore5
+                - libkdeui5
+apps:
+  rapidsvn:
+    command: rapidsvn
+    desktop: usr/share/applications/rapidsvn.desktop
+    environment:
+      LC_ALL: C
+      LANGUAGE: en_US.UTF-8
+      DISABLE_WAYLAND: 1
+    plugs:
+      - home
+      - network
+      - opengl
+      - removable-media
+      - unity7
+      - x11
+      - wayland
+      - desktop
+      - desktop-legacy
