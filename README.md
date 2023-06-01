@@ -1,5 +1,5 @@
 # RapidSVN
-
+![](./img/RapidSVN.png)
 ## Origin
 - [RapidSVN.org](https://rapidsvn.org/)
 - [Download 1.12.1](https://rapidsvn.org/download/release/0.12.1/)
@@ -12,7 +12,7 @@
 ## Snap
 - [RapidSVN-Snap](https://snapcraft.io/install/rapidsvn-snap)
 
-### 
+### Snap Credit
 - Snap Sponsor - Projektbox GmbH, Oliver Arnold
 - Snap Maintainer - Ko Ko Ye
 
